@@ -1,1 +1,1 @@
-console.log("Nodejs AIO boilerplate 2.0");
+console.log("Conduit api");
