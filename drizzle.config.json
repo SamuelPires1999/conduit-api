@@ -1,0 +1,5 @@
+{
+    "out": "./__generated__/migrations",
+    "schema": "./src/config/database/schema",
+    "breakpoints": false
+  }
