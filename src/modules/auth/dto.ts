@@ -8,3 +8,10 @@ export const createNewUserDTO = z.object({
 });
 
 export type IcreateNewUserDTO = z.infer<typeof createNewUserDTO>;
+
+export const loginUserDTO = z.object({
+    email: z.string().email().nonempty(),
+    password: z.string().nonempty(),
+});
+
+export type IloginUserDTO = z.infer<typeof loginUserDTO>;
