@@ -2,7 +2,6 @@ import { ZodError } from "zod";
 import { IcreateNewUserDTO, IloginUserDTO, createNewUserDTO, loginUserDTO } from "./dto";
 import { db } from "../../config/database/db";
 import { comparePasswords, hashPassword } from "../../lib/bcrypt";
-import { eq } from "drizzle-orm";
 import { signJWT } from "../../lib/jwt";
 
 export async function createNewUser(input: IcreateNewUserDTO) {
