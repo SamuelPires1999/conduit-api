@@ -3,6 +3,7 @@ import { IcreateNewUserDTO, IloginUserDTO, createNewUserDTO, loginUserDTO } from
 import { db } from "../../config/database/db";
 import { comparePasswords, hashPassword } from "../../lib/bcrypt";
 import { signJWT } from "../../lib/jwt";
+import { exclude } from "../../lib/exclude-key";
 
 export async function createNewUser(input: IcreateNewUserDTO) {
     try {
@@ -27,7 +28,7 @@ export async function createNewUser(input: IcreateNewUserDTO) {
             },
         });
 
-        return newUser;
+        return exclude(newUser, ["passwordHash"]);
     } catch (error: any) {
         if (error instanceof ZodError) {
             return error;
@@ -60,7 +61,7 @@ export async function loginUser(input: IloginUserDTO) {
 
         return {
             user: {
-                ...userFound,
+                ...exclude(userFound, ["passwordHash"]),
             },
             token: jwt,
         };

@@ -1,4 +1,4 @@
-import { sign } from "jsonwebtoken";
+import { sign, verify } from "jsonwebtoken";
 
 export function signJWT(payload: any) {
     const token = sign(
@@ -10,4 +10,10 @@ export function signJWT(payload: any) {
     );
 
     return token;
+}
+
+export function verifyJWT(token: string) {
+    const verifiedToken = verify(token, process.env.JWT_SECRET as string);
+
+    return verifiedToken;
 }
