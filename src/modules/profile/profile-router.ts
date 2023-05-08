@@ -1,21 +1,8 @@
 import { Router } from "express";
-import { db } from "../../config/database/db";
+import * as ProfileController from "./profile-controller";
 
 const profileRoutes = Router();
 
-profileRoutes.get("/:userName", async (req, res) => {
-    console.log(req.params);
-    const userProfile = await db.user.findFirst({
-        where: {
-            userName: req.params.userName,
-        },
-    });
-
-    return res.json({
-        profile: {
-            ...userProfile,
-        },
-    });
-});
+profileRoutes.get("/:userName", ProfileController.getProfile);
 
 export default profileRoutes;
