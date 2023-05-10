@@ -29,3 +29,8 @@ export async function create(input: IcreateArticleDTO) {
         }
     }
 }
+
+export async function getAllArticles() {
+    const articles = await db.article.findMany();
+    return articles;
+}

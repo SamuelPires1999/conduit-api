@@ -1,9 +1,9 @@
 import { Router } from "express";
+import * as ArticleController from "./articles-controller";
 
 const articleRoutes = Router();
 
-articleRoutes.get("/", (req, res) => {
-    return res.send("return all articles here");
-});
+articleRoutes.post("/", ArticleController.createArticle);
+articleRoutes.get("/", ArticleController.getAll);
 
 export default articleRoutes;
